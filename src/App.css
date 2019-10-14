@@ -23,12 +23,9 @@
 
 .mainDiv {
   border: 1px solid #eee;
-  margin: 200px auto;
+  margin: 50px auto;
 }
 
-.pera{
-  color: red;
-}
 
 .mainDiv .custom-label{
   font-size: 13px;
