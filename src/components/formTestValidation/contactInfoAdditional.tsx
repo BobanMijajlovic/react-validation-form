@@ -1,5 +1,5 @@
 import React        from 'react'
-import FormCheckbox from "./formCheckbox";
+import FormCheckbox from './formCheckbox'
 
 const ContactInfoAdditional = () => {
 

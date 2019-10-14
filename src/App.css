@@ -38,6 +38,9 @@
 .mainDiv h3{
   text-align: center;
 }
+.row{
+  position: relative
+}
 
 .header{
   position: absolute;
