@@ -1,13 +1,12 @@
 import React          from 'react'
 import './App.css'
-import BasicForm      from './testForms/BasicForm'
-import ValidationForm from './components/formTestValidation/formValidation'
+import FormValidation from './components/formTestValidation/FormValidation'
 
 const App : React.FC = () => {
   return (
     <div className="App">
 
-      <ValidationForm/>
+      <FormValidation/>
 
     </div>
   )

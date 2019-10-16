@@ -1,7 +1,7 @@
 /* eslint-disable */
-import {maxValue, minLength} from "./validations";
+import {maxValue, minLength, onlyNumbers} from "./validations";
 describe("test validations",  ()=> {
-   it("validations - check min length ", () => {
+   test("validations - check min length ", () => {
       let minLengthTest = minLength({min: 5})
       expect(minLengthTest()).toBeFalsy()
       expect(minLengthTest("bob")).toBeTruthy()
@@ -12,7 +12,7 @@ describe("test validations",  ()=> {
       expect(minLengthTest('short')).toBe(message)
    })
 
-   it("validations -check maxValue", ()=> {
+   test("validations -check maxValue", ()=> {
        let maxValueTest = maxValue({max: 10})
       expect(maxValueTest()).toBeFalsy()
       expect(maxValueTest(5)).toBeFalsy()
@@ -22,5 +22,14 @@ describe("test validations",  ()=> {
       const message = "THIS is test message"
       maxValueTest = maxValue({max: 7, message: message})
       expect(maxValueTest(22)).toBe(message)
+   })
+
+
+   test("validations- only numbers", ()=> {
+       const message: string =  "Should be only numbers"
+       const fn  = onlyNumbers({message: message});
+       expect(fn()).toBeFalsy()
+       expect(fn('12345')).toBeFalsy()
+       expect(fn('12345e')).toEqual(message)
    })
 })

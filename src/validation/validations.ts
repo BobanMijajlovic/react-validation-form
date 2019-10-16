@@ -4,6 +4,7 @@ const DEFAULT_MESSAGE_REQUIRED = 'Required Field'
 const DEFAULT_MESSAGE_MAX_VALUE = 'Max value is {max}'
 const DEFAULT_MESSAGE_MIN_LENGTH = 'Min length is {min}'
 const DEFAULT_MESSAGE_NOT_EMPTY = 'Field can be empty'
+const DEFAULT_MESSAGE_ONLY_NUMBERS = 'Only numbers'
 
 export interface IValidatorParams {
   message ?: string
@@ -41,6 +42,13 @@ export const minLength = ( {message, min} : IValidatorMinLength) => ( value ? : 
     value = `${value}`
   }
   return isLength(value as string,{min:min}) ? false : (message ? message : DEFAULT_MESSAGE_MIN_LENGTH.replace(/{min}/g, `${min}`))
+}
+/** Check if string consists only numbers as characters */
+export const onlyNumbers = ({message} : IValidatorParams = {})  => (value ? : string) => {
+  if (!isDefined(value)) {
+    return false
+  }
+  return /^\d+$/.exec(value as string) ? false : (message ? message : DEFAULT_MESSAGE_ONLY_NUMBERS)
 }
 
 /** *  Validation max value **/

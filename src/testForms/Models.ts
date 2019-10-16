@@ -1,23 +1,32 @@
+import {IUseValidationForm} from '../validation/validator'
 
-export interface IAddressModel {
+export  type  IBasicModel  = {
+}
+
+export interface IAddressModel extends  IBasicModel{
   street : string,
   zip : number,
-  city : string
+  city : string,
+  state ?: string
 }
-export interface IContactModel {
-  phone : string,
-  email : string
+export interface IContactInfoModel  extends  IBasicModel{
+  phone ?: string,
+  email ? : string
 }
-export interface  IPersonModel {
+export interface  IPersonModel extends  IBasicModel{
   firstName : string,
   lastName : string,
-  age ?: number,
-  contact : IContactModel
+  contact ? : IContactInfoModel
 }
 
 export interface ICompanyModel {
   name : string,
   tin : string,
   address : IAddressModel,
-  contactPerson : IPersonModel
+  person ? : IPersonModel
+}
+
+export interface  IFieldInputBasicProps<T> {
+  useValidation : IUseValidationForm<T>
+  modelFieldBasicString ? : string
 }
