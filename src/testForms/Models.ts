@@ -26,7 +26,3 @@ export interface ICompanyModel {
   person ? : IPersonModel
 }
 
-export interface  IFieldInputBasicProps<T> {
-  useValidation : IUseValidationForm<T>
-  modelFieldBasicString ? : string
-}

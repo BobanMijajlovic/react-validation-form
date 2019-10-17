@@ -1,8 +1,8 @@
-import React                   from 'react'
-import {IFieldInputBasicProps} from '../../testForms/Models'
-import BasicInputValidation    from '../BasicInputValidation'
+import React                     from 'react'
+import BasicInputValidation      from '../BasicInputValidation'
+import {IContextValidationProps} from '../../validation/interfaces'
 
-const AddressInfo = <T extends {}> ({useValidation, modelFieldBasicString} : IFieldInputBasicProps<T>) => {
+const AddressInfo = <T extends {}> ({useValidation, fieldParentName} : IContextValidationProps<T>) => {
 
   return (
     <div className="row col-md-12">
@@ -11,8 +11,8 @@ const AddressInfo = <T extends {}> ({useValidation, modelFieldBasicString} : IFi
         <BasicInputValidation
           helpText={'enter street address'}
           label={'STREET:'}
-          modelField={`${modelFieldBasicString}.street`}
-          useValidationFormInstance={useValidation}
+          modelField={`${fieldParentName}.street`}
+          useValidation={useValidation}
         />
       </div>
 
@@ -20,8 +20,8 @@ const AddressInfo = <T extends {}> ({useValidation, modelFieldBasicString} : IFi
         <BasicInputValidation
           helpText={'enter  zip'}
           label={'ZIP:'}
-          modelField={`${modelFieldBasicString}.zip`}
-          useValidationFormInstance={useValidation}
+          modelField={`${fieldParentName}.zip`}
+          useValidation={useValidation}
         />
       </div>
 
@@ -29,8 +29,8 @@ const AddressInfo = <T extends {}> ({useValidation, modelFieldBasicString} : IFi
         <BasicInputValidation
           helpText={'enter  city'}
           label={'City:'}
-          modelField={`${modelFieldBasicString}.city`}
-          useValidationFormInstance={useValidation}
+          modelField={`${fieldParentName}.city`}
+          useValidation={useValidation}
         />
       </div>
 
@@ -38,14 +38,12 @@ const AddressInfo = <T extends {}> ({useValidation, modelFieldBasicString} : IFi
         <BasicInputValidation
           helpText={'enter  state'}
           label={'State:'}
-          modelField={`${modelFieldBasicString}.state`}
-          useValidationFormInstance={useValidation}
+          modelField={`${fieldParentName}.state`}
+          useValidation={useValidation}
         />
       </div>
-
     </div>
   )
-
 }
 
 export default AddressInfo

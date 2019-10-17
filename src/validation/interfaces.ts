@@ -3,7 +3,13 @@ import {IUseValidationForm} from './validator'
 
 export interface IFieldValidationProps<T> {
   modelField : string,
-  useValidationFormInstance : IUseValidationForm<T>
+  useValidation : IUseValidationForm<T>
+
+}
+
+export interface IContextValidationProps<T> {
+  fieldParentName ? : string,
+  useValidation : IUseValidationForm<T>
 
 }
 
@@ -13,3 +19,4 @@ export interface IFieldInputValidationProps<T>  extends IFieldValidationProps<T>
   helpText : string,
   label : string
 }
+

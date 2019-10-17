@@ -1,47 +1,29 @@
-import React, {useEffect}           from 'react'
-import {IFieldInputValidationProps} from '../validation/Interfaces'
+import React                  from 'react'
+import withValidation, {IWithValidationProps}  from '../validation/components/withValidation'
 
-const BasicInputValidation = <T  extends {}>({modelField, onChange, onBlur, helpText, label, useValidationFormInstance} : IFieldInputValidationProps<T>) => {
+interface IBasicInputValidationProps extends IWithValidationProps{
+  label : string,
+  helpText ? : string
+}
 
-  const {fnFieldValue, fnCheckInModelField, fnSetStateFormFieldValue, fnOnBlurValidation,  fnErrorField } = useValidationFormInstance
+const BasicInputValidation = ({value,error,helpText,label,onChange, onBlur} : IBasicInputValidationProps) => {
 
-  const _value = fnFieldValue(modelField) || ''
-
-  useEffect(() => {
-    fnCheckInModelField(modelField)
-  },[])
-
-  const onChangeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    event.persist()
-    event.target.value = value
-    onChange ? onChange(event) : fnSetStateFormFieldValue(modelField,value)
-  }
-
-  const onBlurHandler = (event : React.FocusEvent<HTMLInputElement>) => {
-    fnOnBlurValidation(modelField)
-    if (onBlur) {
-      onBlur(event) 
-    }
-  }
-  const errorString =  fnErrorField(modelField)
   return (
     <div className= "form-group">
-      <label className="custom-label">{label}</label>
+      <label className={error ? 'custom-label text-danger' : 'custom-label'}>{label}</label>
       <input
-             className={`form-control ${errorString ? 'is-invalid' : ''}`}
+             className={`form-control ${error ? 'is-invalid' : ''}`}
              type="text"
-             onBlur ={onBlurHandler}
-             onChange ={onChangeHandler}
-             value = {_value }
+             onBlur ={onBlur}
+             onChange ={onChange}
+             value = { value }
       />
-      { errorString ?  <small className="invalid-feedback">{errorString}</small>  :
+      { error ?  <small className="invalid-feedback">{error}</small>  :
         (helpText ? <small>{helpText}</small> : <small>&nbsp;</small>)
       }
     </div>
   )
-
 }
 
-export  default  BasicInputValidation
+export  default  withValidation(BasicInputValidation)
 

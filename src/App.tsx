@@ -1,15 +1,13 @@
-import React          from 'react'
+import React                  from 'react'
 import './App.css'
-import FormValidation from './components/formTestValidation/FormValidation'
+import CompanyForm            from './components/test/CompanyForm'
 
-const App : React.FC = () => {
+// eslint-disable-next-line react/display-name
+export default () => {
   return (
     <div className="App">
-
-      <FormValidation/>
-
+      <CompanyForm/>
     </div>
   )
 }
 
-export default App

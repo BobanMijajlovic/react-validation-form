@@ -1,8 +1,8 @@
-import React                   from 'react'
-import BasicInputValidation    from '../BasicInputValidation'
-import {IFieldInputBasicProps} from '../../testForms/Models'
+import React                     from 'react'
+import BasicInputValidation      from '../BasicInputValidation'
+import {IContextValidationProps} from '../../validation/interfaces'
 
-const ContactInfo = <T extends {}>({ useValidation, modelFieldBasicString} : IFieldInputBasicProps<T>) => {
+const ContactInfo = <T extends {}> ({useValidation, fieldParentName} : IContextValidationProps<T>) => {
 
   return (
     <div>
@@ -11,16 +11,16 @@ const ContactInfo = <T extends {}>({ useValidation, modelFieldBasicString} : IFi
           <BasicInputValidation
             helpText={'enter email'}
             label={'EMAIL:'}
-            modelField={`${modelFieldBasicString}.email`}
-            useValidationFormInstance={useValidation}
+            modelField={`${fieldParentName}.email`}
+            useValidation={useValidation}
           />
         </div>
         <div className="form-group p-md-3  col-md-6">
           <BasicInputValidation
                 helpText={'enter mobile phone'}
                 label={'MOBILE: '}
-                modelField={`${modelFieldBasicString}.phone`}
-                useValidationFormInstance={useValidation}
+                modelField={`${fieldParentName}.phone`}
+                useValidation={useValidation}
           />
         </div>
       </div>

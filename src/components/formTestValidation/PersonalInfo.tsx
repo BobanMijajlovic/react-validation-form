@@ -1,9 +1,9 @@
-import React          from 'react'
-import ContactInfo             from './ContactInfo'
-import BasicInputValidation    from '../BasicInputValidation'
-import {IFieldInputBasicProps} from '../../testForms/Models'
+import React                     from 'react'
+import ContactInfo               from './ContactInfo'
+import BasicInputValidation      from '../BasicInputValidation'
+import {IContextValidationProps} from '../../validation/interfaces'
 
-const PersonalInfo = <T extends {}>({useValidation, modelFieldBasicString} : IFieldInputBasicProps<T>) => {
+const PersonalInfo = <T extends {}> ({useValidation, fieldParentName} : IContextValidationProps<T>) => {
 
   return (
     <div className="row col-md-12">
@@ -11,22 +11,22 @@ const PersonalInfo = <T extends {}>({useValidation, modelFieldBasicString} : IFi
         <BasicInputValidation
             helpText={'enter first name'}
             label={'First NAME:'}
-            modelField={`${modelFieldBasicString}.firstName`}
-            useValidationFormInstance={useValidation}
+            modelField={`${fieldParentName}.firstName`}
+            useValidation={useValidation}
         />
       </div>
-      <div className="form-group p-md-3  col-md-6">
+      <div className="form-group  p-md-3  col-md-6">
         <BasicInputValidation
               helpText={'enter last name'}
               label={'LAST NAME:'}
-              modelField={`${modelFieldBasicString}.lastName`}
-              useValidationFormInstance={useValidation}
+              modelField={`${fieldParentName}.lastName`}
+              useValidation={useValidation}
         />
       </div>
 
       <ContactInfo
         useValidation={useValidation}
-        modelFieldBasicString={`${modelFieldBasicString}.contact`}
+        fieldParentName={`${fieldParentName}.contact`}
       />
     </div>
   )

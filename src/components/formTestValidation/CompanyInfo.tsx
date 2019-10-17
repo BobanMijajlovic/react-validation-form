@@ -1,8 +1,8 @@
-import React                   from 'react'
-import {IFieldInputBasicProps} from '../../testForms/Models'
-import BasicInputValidation    from '../BasicInputValidation'
+import React                     from 'react'
+import BasicInputValidation      from '../BasicInputValidation'
+import {IContextValidationProps} from '../../validation/interfaces'
 
-const CompanyInfo = <T extends {}> ({useValidation} : IFieldInputBasicProps<T>) => {
+const CompanyInfo = <T extends {}> ({useValidation} : IContextValidationProps<T>) => {
 
   return (
 
@@ -13,15 +13,15 @@ const CompanyInfo = <T extends {}> ({useValidation} : IFieldInputBasicProps<T>) 
           helpText={'company name'}
           label={'Company Name:'}
           modelField={'name'}
-          useValidationFormInstance={useValidation}
+          useValidation={useValidation}
         />
       </div>
-      <div className="form-group p-md-3  col-md-3">
+      <div className="form-group p-md-3 col-md-3">
         <BasicInputValidation
           helpText={'company tin'}
           label={'Company TIN:'}
           modelField={'tin'}
-          useValidationFormInstance={useValidation}
+          useValidation={useValidation}
         />
       </div>
     </div>
